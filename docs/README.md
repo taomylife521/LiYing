@@ -17,7 +17,7 @@
 
 <br>
 
-## 项目介绍
+## 🧭 项目介绍
 
 LiYing 可以完成人体、人脸自动识别，角度自动纠正，自动更换任意背景色，任意尺寸证件照自动裁切，并自动排版。
 
@@ -39,7 +39,7 @@ LiYing 可以完全离线运行。所有图像处理操作都在本地运行。
 
 <br>
 
-## 开始使用
+## ⚙️ 开始使用
 
 ### 整合包
 
@@ -65,7 +65,7 @@ run_webui.bat
 # 浏览器访问 127.0.0.1:7860
 ```
 
-### 先决条件
+### 🛠 先决条件
 
 1. **依赖项**
    - LiYing 依赖于 AGPicCompress
@@ -81,7 +81,7 @@ run_webui.bat
    - Windows 用户需要安装最新 [Microsoft Visual C++ Redistributable 依赖](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist)
    - Windows 系统最低要求 Windows 7 SP1 及以上
 
-### 从源码构建
+### 🧪 从源码构建
 
 1. 克隆项目：
 ```shell
@@ -92,7 +92,27 @@ pip install -r requirements.txt # install Python helpers' dependencies
 
 **注： 如果您使用的是 Windows 7 系统请您至少需要是 Windows 7 SP1 以上版本，且要求 `onnxruntime==1.14.0, orjson==3.10.7, gradio==4.44.1`**
 
-### 下载对应模型
+### GPU推理加速（可选）
+
+如需使用英伟达GPU加速推理，请按以下步骤操作：
+
+1. 确保已安装 [CUDA](https://developer.nvidia.com/cuda-downloads) 与 [cuDNN](https://developer.nvidia.com/cudnn)
+2. [查找 ONNX、CUDA 与 cuDNN 之间的对应版本](https://onnxruntime.ai/docs/execution-providers/CUDA-ExecutionProvider.html)
+2. 安装支持 GPU 的 onnxruntime 版本：
+   ```bash
+   # 如果已安装 CPU 版本，先卸载
+   pip uninstall onnxruntime
+   # 安装 GPU 版本, 确保版本正确
+   pip install onnxruntime-gpu
+   ```
+
+当前版本系统会自动检测是否支持 GPU，如果支持则优先使用 GPU 进行推理，否则会自动回退到 CPU。无需额外配置。
+
+**如果存在问题请优先检查且确保使用的 Python 版本 、CUDA 版本 、cuDNN 版本 与 onnxruntime-gpu 版本相互兼容。**
+
+<br>
+
+### 📦 下载对应模型
 
 您需要下载该项目使用到的模型并将其放置在 `LiYing/src/model` 中。或者您可以在 CIL 中指定模型路径。
 
@@ -112,7 +132,7 @@ pip install -r requirements.txt # install Python helpers' dependencies
 | 百度网盘         | [下载链接(提取码：ahr9)](https://pan.baidu.com/s/1QhzW53vCbhkIzvrncRqJow?pwd=ahr9)             |
 | Github releases | [下载链接](https://github.com/aoguai/LiYing/releases/latest)             |
 
-#### 运行
+#### 🚀 运行
 
 查看 CIL 帮助：
 ```shell
@@ -133,7 +153,7 @@ cd LiYing/src/webui
 python app.py
 ```
 
-### CIL 参数信息与帮助
+### 🧾 CIL 参数信息与帮助
 
 ```shell
 python main.py --help 
@@ -169,16 +189,65 @@ Options:
   -szr, --size-range SIZE_RANGE   文件大小范围（KB），格式为最小值,最大值（例如：10,20）
   -uc, --use-csv-size / --no-use-csv-size
                                   是否使用CSV中的文件大小限制
+  -lp, --layout-position INTEGER RANGE
+                                  布局位置(0-8)：0=左上，1=上，2=右上，3=左中，4=中，5=右中，6=左下，7
+                                  =下，8=右下  [0<=x<=8]
   --help                          Show this message and exit.
 ```
 
-### 配置文件
+### 🗂 配置文件
 
 在该版本中，在`data`目录中设置了常规的证件照配置`size_XX.csv`与常用颜色配置`color_XX.csv`，您可以自行按照给出的 CSV 模板格式修改或增删配置。
 
 <br>
 
-## 更新日志
+### 🐳 Docker 部署
+
+---
+
+#### ️ 一、构建镜像
+
+##### 使用 docker-compose 构建
+
+项目根目录执行：
+
+```bash
+docker compose build
+```
+
+##### 手动构建镜像
+
+在项目根目录执行以下命令：
+
+```bash
+docker build -t liying/webui:latest .
+```
+
+---
+
+### 二、启动服务
+
+使用以下命令启动 Gradio Web UI 服务：
+
+```bash
+docker compose up -d
+```
+
+启动后，可通过浏览器访问：
+
+```
+http://127.0.0.1:7860
+```
+
+---
+
+如遇问题，建议先检查模型是否正确放置于 `src/model/` 下，并确认端口未被占用。
+
+需要了解更多部署细节或进阶配置，可查看 [`Dockerfile`](./Dockerfile) 和 [`docker-compose.yml`](./docker-compose.yml)。
+
+<br>
+
+## 🧱 更新日志
 
 **注意该版本对 CIL 参数进行了更改，为了避免问题请你仔细阅读最新 CIL 帮助文档**
 
@@ -210,7 +279,7 @@ Options:
 
 <br>
 
-## 致谢
+## 🙏 致谢
 
 该项目的制作初衷和项目名称来源于帮助我的父母更轻松的完成他们的工作，在此感谢我的父母。
 
@@ -236,19 +305,19 @@ Options:
 
 <br>
 
-## 贡献
+## 🤝 贡献
 
 LiYing 是一个开源项目，非常欢迎社区的参与。要为该项目做出贡献，请遵循[贡献指南](./CONTRIBUTING.md)。
 
 <br>
 
-## 开源协议
+## 📄 开源协议
 
 [LiYing](https://github.com/aoguai/LiYing) 使用 AGPL-3.0 license 进行开源，详情请参阅 [LICENSE](../LICENSE) 文件。
 
 <br>
 
-## 赞赏
+## 💖 赞赏
 
 如果这个项目对您有帮助，欢迎任意赞赏，这对我十分有帮助，感谢您的支持！
 
@@ -260,7 +329,7 @@ USDT(TRON):TWFDp8aZMWZHPXjBodyhfPeK8LUyrWe9mi
 
 <br>
 
-## Star History
+## ⭐ Star History
 
 <a href="https://star-history.com/#aoguai/LiYing&Timeline">
   <picture>

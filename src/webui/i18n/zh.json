@@ -56,5 +56,18 @@
     "size_params_conflict": "同时提供了目标大小和大小范围。将使用目标大小。",
     "size_input_option": "大小输入方式",
     "target_size_radio": "目标大小",
-    "size_range_radio": "大小范围"
+    "size_range_radio": "大小范围",
+    "layout_position": "布局位置",
+    "layout_position_0": "左上",
+    "layout_position_1": "上",
+    "layout_position_2": "右上",
+    "layout_position_3": "左中",
+    "layout_position_4": "中",
+    "layout_position_5": "右中",
+    "layout_position_6": "左下",
+    "layout_position_7": "下",
+    "layout_position_8": "右下",
+    "photos_spacing": "照片间距（像素）",
+    "download_image": "下载图像",
+    "server_save_disabled": "服务器部署模式下已禁用保存到服务器功能"
 }
