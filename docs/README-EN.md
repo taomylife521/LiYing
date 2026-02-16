@@ -167,8 +167,9 @@ Options:
   -r, --rmbg-model-path PATH      Path to RMBG model
   -sz, --size-config PATH         Path to size configuration file
   -cl, --color-config PATH        Path to color configuration file
-  -b, --rgb-list RGB_LIST         RGB channel values list (comma-separated)
-                                  for image composition
+  -b, --rgb-list RGB_LIST         RGB(A) channel values list (comma-separated)
+                                  for image composition (optional alpha:
+                                  0-255)
   -s, --save-path PATH            Path to save the output image
   -p, --photo-type TEXT           Photo types
   -ps, --photo-sheet-size TEXT    Size of the photo sheet
@@ -201,6 +202,8 @@ Options:
                                   2=top-right, 3=middle-left, 4=center,
                                   5=middle-right, 6=bottom-left, 7=bottom,
                                   8=bottom-right  [0<=x<=8]
+  -psp, --photos-spacing INTEGER  Pixel spacing between photos in the sheet
+                                  (default: 0)
   --help                          Show this message and exit.
 ```
 
@@ -260,6 +263,19 @@ For more details or advanced configuration, check the [`Dockerfile`](./Dockerfil
 
 **Note: This version includes changes to CIL parameters. Please carefully read the latest CIL help documentation to avoid issues.**
 
+- **2026/02/16 Update**
+  - Added Docker deployment support.
+  - Added GPU-accelerated inference support.
+  - Added `photos-spacing` option.
+  - Added `layout-position` option.
+  - Added support for transparent background output and fast background preview.
+  - Added batch upload/processing and batch downloads for WebUI.
+  - Optimized WebUI image download for server deployment.
+  - Fixed other known bugs.
+
+<details>
+    <summary>Previous Changelog</summary>
+
 - **2025/06/30 Update**
   - Added `size_range` option, allowing users to input a min and max file size, attempting to maintain quality while keeping the file size within the range.
   - Added `target_size` option to control the photo file size.
@@ -267,9 +283,6 @@ For more details or advanced configuration, check the [`Dockerfile`](./Dockerfil
   - Added automatic builds for CLI/BAT/WEBUI versions.
   - Added model path configuration options.
   - Fixed known bugs.
-
-<details>
-    <summary>Previous Changelog</summary>
 
 - **2025/02/07 Update**
   - **Added WebUI**
@@ -284,6 +297,7 @@ For more details or advanced configuration, check the [`Dockerfile`](./Dockerfil
   - Added support for entering width and height in pixels directly for `photo-type` and `photo-sheet-size`, and support for configuration via `data.ini`.
   - Fixed issues related to some i18n configurations; now compatible with both English and Chinese settings.
   - Fixed other known bugs.
+
 </details>
 
 <br>

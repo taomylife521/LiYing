@@ -24,44 +24,24 @@ jobs:
 
             本发布包含以下三种版本：
 
-            ### CLI 版本
-            - **Compatible**: Python 3.8.10 + onnxruntime 1.14.0
-              - 仅包含命令行界面的单个可执行文件（pyinstaller打包）
-              - 体积最小，启动最快
-              - 仅支持命令行参数运行
-              - 适合自动化脚本或批处理调用
-              - 兼容性最好，适合较老的系统
-            - **Latest**: Python 3.11.8 + onnxruntime >=1.14.0
-              - 与Compatible版本功能相同，但使用更新的Python和依赖
-              - 性能更好，适合较新的系统
-
-            ### BAT 版本
-            - **Compatible**: Python 3.8.10 (Embedded) + onnxruntime 1.14.0
-              - 包含完整的Python环境（嵌入式）
-              - 不包含WebUI相关组件
-              - 支持命令行和批处理脚本运行
-              - 兼容性好，适合较老的系统
-            - **Latest**: Python 3.11.8 (Embedded) + onnxruntime >=1.14.0
-              - 与Compatible版本功能相同，但使用更新的Python和依赖
-              - 性能更好，适合较新的系统
-
-            ### WebUI 版本
-            - **Compatible**: Python 3.8.10 (Embedded) + gradio 4.44.1
-              - 完整版本，包含所有功能
-              - 包含WebUI图形界面
-              - 包含完整的Python环境（嵌入式）
-              - 支持命令行、批处理脚本和网页界面运行
-              - 兼容性好，适合较老的系统
-            - **Latest**: Python 3.11.8 (Embedded) + gradio >=4.44.1
-              - 与Compatible版本功能相同，但使用更新的Python和依赖
-              - 性能更好，适合较新的系统
+            | 版本类型 | 版本 | 运行环境 / 关键依赖 | 特点 |
+            | --- | --- | --- | --- |
+            | CLI | Compatible | Python 3.8.10 + onnxruntime 1.14.0 | 单文件可执行（pyinstaller）<br>体积最小，启动最快<br>仅支持命令行参数运行<br>适合自动化脚本或批处理调用<br>兼容性最好，适合较老系统 |
+            | CLI | Latest | Python 3.11.8 + onnxruntime >= 1.14.0 | 与 Compatible 功能相同，但使用更新的 Python 和依赖<br>性能更好，适合较新的系统 |
+            | BAT | Compatible | Python 3.8.10 (Embedded) + onnxruntime 1.14.0 | 包含完整 Python 环境（嵌入式）<br>不包含 WebUI 相关组件<br>支持命令行和批处理脚本运行<br>兼容性好，适合较老系统 |
+            | BAT | Latest | Python 3.11.8 (Embedded) + onnxruntime >= 1.14.0 | 与 Compatible 功能相同，但使用更新的 Python 和依赖<br>性能更好，适合较新的系统 |
+            | WebUI | Compatible | Python 3.8.10 (Embedded) + gradio 4.44.1 | 完整版本，包含所有功能<br>包含 WebUI 图形界面<br>包含完整 Python 环境（嵌入式）<br>支持命令行、批处理脚本和网页界面运行<br>兼容性好，适合较老系统 |
+            | WebUI | Latest | Python 3.11.8 (Embedded) + gradio >= 4.44.1 | 与 Compatible 功能相同，但使用更新的 Python 和依赖<br>性能更好，适合较新的系统 |
 
             ### 选择建议
-            - 如果您只需要命令行功能，推荐使用 CLI 版本
-            - 如果您需要批处理脚本功能，推荐使用 BAT 版本
-            - 如果您需要完整功能，推荐使用 WebUI 版本
-            - 如果您的系统较老或遇到兼容性问题，请选择 Compatible 版本
-            - 如果您的系统较新且想要获得最佳性能，请选择 Latest 版本
+
+            | 需求 | 推荐 |
+            | --- | --- |
+            | 只需要命令行功能 | CLI |
+            | 需要批处理脚本功能 | BAT |
+            | 需要完整功能 | WebUI |
+            | 系统较老或遇到兼容性问题 | Compatible |
+            | 系统较新且想要获得最佳性能 | Latest |
 
             ---
 
@@ -69,44 +49,24 @@ jobs:
 
             This release includes three different versions:
 
-            ### CLI Version
-            - **Compatible**: Python 3.8.10 + onnxruntime 1.14.0
-              - Single executable file with command-line interface only (pyinstaller packaged)
-              - Smallest size and fastest startup
-              - Supports command-line parameters only
-              - Ideal for automation scripts or batch processing
-              - Best compatibility, suitable for older systems
-            - **Latest**: Python 3.11.8 + onnxruntime >=1.14.0
-              - Same functionality as Compatible version but with newer Python and dependencies
-              - Better performance, suitable for newer systems
-
-            ### BAT Version
-            - **Compatible**: Python 3.8.10 (Embedded) + onnxruntime 1.14.0
-              - Includes complete Python environment (embedded)
-              - Does not include WebUI components
-              - Supports command-line and batch script execution
-              - Good compatibility, suitable for older systems
-            - **Latest**: Python 3.11.8 (Embedded) + onnxruntime >=1.14.0
-              - Same functionality as Compatible version but with newer Python and dependencies
-              - Better performance, suitable for newer systems
-
-            ### WebUI Version
-            - **Compatible**: Python 3.8.10 (Embedded) + gradio 4.44.1
-              - Complete version with all features
-              - Includes WebUI graphical interface
-              - Includes complete Python environment (embedded)
-              - Supports command-line, batch scripts, and web interface
-              - Good compatibility, suitable for older systems
-            - **Latest**: Python 3.11.8 (Embedded) + gradio >=4.44.1
-              - Same functionality as Compatible version but with newer Python and dependencies
-              - Better performance, suitable for newer systems
+            | Type | Variant | Runtime / Key deps | Notes |
+            | --- | --- | --- | --- |
+            | CLI | Compatible | Python 3.8.10 + onnxruntime 1.14.0 | Single executable (pyinstaller)<br>Smallest size, fastest startup<br>Command-line args only<br>Ideal for automation scripts or batch processing<br>Best compatibility for older systems |
+            | CLI | Latest | Python 3.11.8 + onnxruntime >= 1.14.0 | Same features as Compatible with newer Python/dependencies<br>Better performance for newer systems |
+            | BAT | Compatible | Python 3.8.10 (Embedded) + onnxruntime 1.14.0 | Includes complete embedded Python environment<br>Does not include WebUI components<br>Supports command-line and batch script execution<br>Good compatibility for older systems |
+            | BAT | Latest | Python 3.11.8 (Embedded) + onnxruntime >= 1.14.0 | Same features as Compatible with newer Python/dependencies<br>Better performance for newer systems |
+            | WebUI | Compatible | Python 3.8.10 (Embedded) + gradio 4.44.1 | Complete version with all features<br>Includes WebUI graphical interface<br>Includes complete embedded Python environment<br>Supports command-line, batch scripts, and web interface<br>Good compatibility for older systems |
+            | WebUI | Latest | Python 3.11.8 (Embedded) + gradio >= 4.44.1 | Same features as Compatible with newer Python/dependencies<br>Better performance for newer systems |
 
             ### Selection Recommendations
-            - If you only need command-line functionality, choose the CLI version
-            - If you need batch script functionality, choose the BAT version
-            - If you need complete functionality, choose the WebUI version
-            - If you have an older system or encounter compatibility issues, choose the Compatible version
-            - If you have a newer system and want the best performance, choose the Latest version
+
+            | Need | Choose |
+            | --- | --- |
+            | Command-line only | CLI |
+            | Batch scripts | BAT |
+            | Full features | WebUI |
+            | Older system / compatibility issues | Compatible |
+            | Newer system / best performance | Latest |
           draft: false
           prerelease: false
 

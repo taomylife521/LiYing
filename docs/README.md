@@ -87,7 +87,7 @@ run_webui.bat
 ```shell
 git clone https://github.com/aoguai/LiYing
 cd LiYing ## 进入 LiYing 目录
-pip install -r requirements.txt # install Python helpers' dependencies
+pip install -r requirements.txt # 安装依赖
 ```
 
 **注： 如果您使用的是 Windows 7 系统请您至少需要是 Windows 7 SP1 以上版本，且要求 `onnxruntime==1.14.0, orjson==3.10.7, gradio==4.44.1`**
@@ -165,7 +165,7 @@ Options:
   -r, --rmbg-model-path PATH      RMBG 模型路径
   -sz, --size-config PATH         尺寸配置文件路径
   -cl, --color-config PATH        颜色配置文件路径
-  -b, --rgb-list RGB_LIST         RGB 通道值列表（英文逗号分隔），用于图像合成
+  -b, --rgb-list RGB_LIST         RGB(A) 通道值列表（英文逗号分隔，可选 Alpha: 0-255），用于图像合成
   -s, --save-path PATH            保存路径
   -p, --photo-type TEXT           照片类型
   -ps, --photo-sheet-size TEXT    选择照片表格的尺寸
@@ -192,6 +192,7 @@ Options:
   -lp, --layout-position INTEGER RANGE
                                   布局位置(0-8)：0=左上，1=上，2=右上，3=左中，4=中，5=右中，6=左下，7
                                   =下，8=右下  [0<=x<=8]
+  -psp, --photos-spacing INTEGER  照片间距（像素，默认0）
   --help                          Show this message and exit.
 ```
 
@@ -251,6 +252,19 @@ http://127.0.0.1:7860
 
 **注意该版本对 CIL 参数进行了更改，为了避免问题请你仔细阅读最新 CIL 帮助文档**
 
+- **2026/02/16 更新**
+  - 新增 Docker 部署支持
+  - 新增 GPU 推理加速支持
+  - 新增 `photos-spacing` 选项
+  - 新增 `layout-position` 选项
+  - 新增 支持透明背景输出与快速背景预览
+  - 新增 WebUI 支持批量上传/处理与批量下载
+  - 优化 WebUI 在服务器部署场景下的图片下载
+  - 修复 其他已知 BUG
+
+<details> 
+    <summary>往期更新日志</summary>
+
 - **2025/06/30 更新**
   - 新增 size_range 选项，允许用户输入照片文件大小的最小值和最大值，尝试在保持质量的同时确保文件大小在范围内
   - 新增 target_size 选项，用于控制照片文件大小
@@ -258,9 +272,6 @@ http://127.0.0.1:7860
   - 新增 CLI/BAT/WEBUI 版本的自动构建
   - 新增 模型路径配置选项
   - 修复 已知BUG
-
-<details> 
-    <summary>往期更新日志</summary>
 
 - **2025/02/07 更新**
   - **添加 WebUI**
@@ -275,6 +286,7 @@ http://127.0.0.1:7860
   - 新增 photo-type 和 photo-sheet-size 支持直接输入宽高像素，支持使用 data.ini 配置
   - 修复 部分 i18n 导致的已知问题，现在可以兼容中英文配置
   - 修复 其他已知BUG
+
 </details>
 
 <br>
